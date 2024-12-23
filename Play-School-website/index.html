@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit-icons.min.js"></script>
+
+<style>
+          @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+.main {
+  font-family: "Quicksand", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  min-height: 100vh;
+  /* Changed dark background to playful gradient */
+  background: linear-gradient(145deg, #fff6e5 0%, #ffe4e9 76%);
+  background-color: #fff;
+}
+
+/* Content */
+
+.content-mg {
+  padding-left: 120px;
+  /* Changed text color to darker for better readability on light background */
+  color: #4a4a4a;
+  user-select: none;
+}
+
+.content-mg h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 4vw, 6rem);
+  font-weight: 700;
+  /* Changed gradient to playschool-friendly colors */
+  background: -webkit-linear-gradient(0deg, #ff6b99, #ff9f4a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  padding-left: 10px;
+}
+
+.content-mg p {
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  line-height: 1.6;
+  padding-right: 100px;
+}
+
+.btn-mg {
+  /* Updated button colors to match playschool theme */
+  background-color: #ff6b99;
+  background-image: linear-gradient(-180deg, #ff9f4a, #ff6b99);
+  font-size: clamp(0.8rem, 8vw, 0.9rem);
+  font-weight: 600;
+  color: #fff;
+  width: max-content;
+  outline: 0;
+  border: 0;
+  border-radius: 20px; /* Made button more rounded */
+  box-shadow: 0 4px 8px rgba(255, 107, 153, 0.3);
+  padding: 12px 24px;
+  margin-top: 26px;
+  text-align: center;
+  transform: scale(1);
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+.btn-mg:hover {
+  box-shadow: 0 6px 12px rgba(255, 107, 153, 0.5);
+  transform: scale(1.02);
+}
+
+/* Stacked Cards */
+
+.stack {
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 500px;
+  border-radius: 2rem;
+  /* Updated shadow to be softer */
+  box-shadow: 0 8px 16px rgba(255, 159, 74, 0.2);
+  transition: transform 0.6s;
+  user-select: none;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.card:nth-last-child(n + 5) {
+  --x: calc(-50% + 90px);
+  transform: translate(var(--x), -50%) scale(0.85);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.01);
+}
+
+.card:nth-last-child(4) {
+  --x: calc(-50% + 60px);
+  transform: translate(var(--x), -50%) scale(0.9);
+}
+
+.card:nth-last-child(3) {
+  --x: calc(-50% + 30px);
+  transform: translate(var(--x), -50%) scale(0.95);
+}
+
+.card:nth-last-child(2) {
+  --x: calc(-50%);
+  transform: translate(var(--x), -50%) scale(1);
+}
+
+.card:nth-last-child(1) {
+  --x: calc(-50% - 30px);
+  transform: translate(var(--x), -50%) scale(1.05);
+}
+
+/* Updated last card highlight */
+.card:nth-last-child(1) img {
+  box-shadow: 0 2px 8px rgba(255, 159, 74, 0.5);
+}
+
+.swap {
+  animation: swap 1.3s ease-out forwards;
+}
+
+@keyframes swap {
+  30% {
+    transform: translate(calc(var(--x) - 250px), -50%) scale(0.85) rotate(-5deg)
+      rotateY(65deg);
+  }
+  100% {
+    transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+    z-index: -1;
+  }
+}
+
+/* Media queries for keyframes */
+
+@media (max-width: 1200px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 200px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  @keyframes swap {
+    30% {
+      transform: translate(calc(var(--x) - 150px), -50%) scale(0.85)
+        rotate(-5deg) rotateY(65deg);
+    }
+
+    100% {
+      transform: translate(calc(var(--x) - 30px), -50%) scale(0.5);
+      z-index: -1;
+    }
+  }
+}
+
+/* Media queries for other classes */
+
+@media (max-width: 1200px) {
+  .content-mg {
+    padding-left: 80px;
+  }
+
+  .content-mg p {
+    padding-right: 40px;
+  }
+
+  .card {
+    width: 250px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .content-mg {
+    padding-left: 60px;
+  }
+
+  .content-mg p {
+    line-height: 1.5;
+  }
+
+  .card {
+    width: 220px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 990px) {
+  .content-mg p {
+    padding-right: 0;
+  }
+
+  .card {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 950px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 3fr;
+    grid-template-areas:
+      "stacked"
+      "content";
+  }
+
+  .content-mg {
+    grid-area: content;
+    text-align: center;
+    padding: 0 90px;
+  }
+
+  .btn-mg {
+    margin-bottom: 30px;
+  }
+
+  .stack {
+    grid-area: stacked;
+  }
+}
+
+@media (max-width: 650px) {
+  .main {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .content-mg {
+    padding: 0 50px;
+  }
+
+  .content-mg h1 {
+    padding-left: 0;
+  }
+
+  .btn-mg {
+    padding: 8px 16px;
+  }
+
+  .card {
+    width: 180px;
+    height: 260px;
+  }
+}
+</style>
+  </head>
+  <body>
+    
+      <!-- nav start -->
+     <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <i class="fas fa-clock"></i> 9:30am - 6:30pm Mon - Sun
+                <i class="fas fa-phone-alt ms-4"></i> +800-123-4567 6587
+                <i class="fas fa-map-marker-alt ms-4"></i> Beverley, New York 224 US
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                <a href="#"><i class="fab fa-skype"></i></a>
+                <a href="#"><i class="fas fa-rss"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img alt="Kitton Logo" height="50" src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/logo/logo.png" width="130"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html" style="color: #8dc63f;">
+                            <i class="fas fa-home"></i>&nbsp; Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" style="color: #92278f;">
+                            <i class="fas fa-user"></i>&nbsp; About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classes.html" style="color: #ff5200;">
+                            <i class="fas fa-book"></i>&nbsp; Classes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teachers.html" style="color: #01767a;">
+                            <i class="fas fa-chalkboard-teacher"></i>&nbsp; Teachers
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #f2069b;">
+                            <i class="fas fa-camera-retro"></i>&nbsp; Moments
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a style="color: #47ee05f1;" class="dropdown-item" href="gallery.html"><i class="fas fa-images"></i>&nbsp; Gallery</a></li>
+                            <li><a style="color: #e11a1f;" class="dropdown-item" href="events.html"><i class="fas fa-calendar-alt"></i>&nbsp; Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" style="color: #002c9d;">
+                            <i class="fas fa-map-marker-alt"></i>&nbsp; Contact
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+       <!-- nav end -->
+
+       <!-- slider start -->
+        <main class="main">
+            <div class="content-mg">
+              <h1>Best Child Care Center - Kitton</h1>
+              <p>
+                Welcome to La Pâtisserie Belle, where every bite is a journey into the
+                exquisite world of finely crafted pastries. Our patisserie is
+                dedicated to bringing you the most delicious and beautifully designed
+                pastries that will delight your senses and elevate your taste
+                experience. Nestled in the heart of the city, our patisserie is a
+                haven for those who appreciate the finer things in life.
+              </p>
+              <button class="btn-mg">GET STARTED NOW</button>
+            </div>
+            
+            <div class="stack">
+              <div class="card">
+                <img
+                  src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/about/about02.png"
+                  alt="" />
+              </div>
+              <div class="card">
+                <img
+                  src="https://template-kit.evonicmedia.com/layout58/wp-content/uploads/2024/01/img-about-1.jpg"
+                  alt="" />
+              </div>
+              <div class="card">
+                <img
+                  src="https://template-kit.evonicmedia.com/layout58/wp-content/uploads/2024/01/img-3-1-1-1.jpg"
+                  alt="" />
+              </div>
+              <div class="card">
+                <img
+                  src="https://template-kit.evonicmedia.com/layout58/wp-content/uploads/2024/01/Rectangle-77.jpg"
+                  alt="" />
+              </div>
+              <div class="card">
+                <img
+                  src="https://template-kit.evonicmedia.com/layout58/wp-content/uploads/2024/01/number-matching-2.jpg"
+                  alt="" />
+              </div>
+              <div class="card">
+                <img
+                  src="https://template-kit.evonicmedia.com/layout58/wp-content/uploads/2024/01/background-8.jpg"
+                  alt="" />
+              </div>
+            </div>
+          </main>
+          <!-- slider end -->
+
+          <!-- admission form start -->
+            <div class="container-fluid" style="background-color: #ffd7a1;">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-1">
+
+                        </div>
+                        <div class="col-lg-10 col-md-12 col-sm-12">
+                            <div class="form-header admission-form-header text-center text-white">
+                                <i class="fas fa-school fa-3x"></i>
+                                <h2>Admission Form 2024-25</h2>
+                            </div>
+
+                            <form class="bg-white p-4 rounded shadow">
+                                <!-- Child Information -->
+                                <div class="section-header admission-sec-header mb-4">
+                                    <h3 class="text-dark mb-0">
+                                        <i class="fas fa-child me-2"></i>Child Information
+                                    </h3>
+                                </div>
+                    
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-user me-2"></i>First Name
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-user me-2"></i>Last Name
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-calendar me-2"></i>Date of Birth
+                                        </label>
+                                        <input type="date" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-venus-mars me-2"></i>Gender
+                                        </label>
+                                        <select class="form-select" required>
+                                            <option value="">Select Gender</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                    
+                                <!-- Parent Information -->
+                                <div class="section-header admission-sec-header mt-5 mb-4">
+                                    <h3 class="text-dark mb-0">
+                                        <i class="fas fa-users me-2"></i>Parent/Guardian Information
+                                    </h3>
+                                </div>
+                    
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-user-tie me-2"></i>Parent's Name
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-phone me-2"></i>Contact Number
+                                        </label>
+                                        <input type="tel" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-envelope me-2"></i>Email Address
+                                        </label>
+                                        <input type="email" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-briefcase me-2"></i>Occupation
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">
+                                            <i class="fas fa-home me-2"></i>Home Address
+                                        </label>
+                                        <textarea class="form-control admission-form-control" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                    
+                                <!-- Emergency Contact -->
+                                <div class="section-header admission-sec-header mt-5 mb-4">
+                                    <h3 class="text-dark mb-0">
+                                        <i class="fas fa-ambulance me-2"></i>Emergency Contact
+                                    </h3>
+                                </div>
+                    
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-user-friends me-2"></i>Contact Name
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">
+                                            <i class="fas fa-phone me-2"></i>Emergency Number
+                                        </label>
+                                        <input type="tel" class="form-control admission-form-control" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label">
+                                            <i class="fas fa-user-circle me-2"></i>Relationship to Child
+                                        </label>
+                                        <input type="text" class="form-control admission-form-control" required>
+                                    </div>
+                                </div>
+                    
+                                <div class="mt-5 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Application
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-1">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <!-- admission form end -->
+
+          <!-- about school start -->
+          <div class="container-fluid" style="background-color: #ffd7a1;">
+            <div class="container">
+                <div class="row pt-5">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/about/about02.png" alt="">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="p-3">
+                            <h3 class="" style="color: #92278f;">About Our kitton</h3>
+                            <h2 class="" style="font-weight: 700;">Special Attention For Every Child</h2>
+                            <p class="" style="font-weight: 300; font-size: 18px; text-align: justify;">Dolor sit amet consectetur elitery eiusmod tempor dunt aliqua utas enim veniam
+                                eiusmod tempor incididunt labore apidiously utilize functionr ideas for integrated
+                                information niqueliy disseinate proces-centric sources and backward compatible
+                                channels rofessionally repurpose schools business</p>
+                                <ul style="color: #0e2c53; list-style: none; padding: 0;">
+                                    <li class="fw-medium" style="margin-bottom: 10px;">
+                                        <i class="fas fa-bath" style="color: #8dc63f;"></i>&nbsp; 
+                                        <span style="color: #0e2c53; font-weight: 500;">Neat And Clean</span> 
+                                        <span style="color: #8dc63f; font-weight: 700;">Washroom</span>
+                                    </li>
+                                    <li class="fw-medium" style="margin-bottom: 10px;">
+                                        <i class="fas fa-utensils" style="color: #92278f;"></i>&nbsp; 
+                                        <span style="color: #0e2c53; font-weight: 500;">Canteen With Healthy</span> 
+                                        <span style="color: #92278f; font-weight: 700;">Foods And Water</span>
+                                    </li>
+                                    <li class="fw-medium" style="margin-bottom: 10px;">
+                                        <i class="fas fa-snowflake" style="color: #ff5200;"></i>&nbsp; 
+                                        <span style="color: #0e2c53; font-weight: 500;">Air Condition</span> 
+                                        <span style="color: #ff5200; font-weight: 700;">Class Room</span>
+                                    </li>
+                                    <li class="fw-medium" style="margin-bottom: 10px;">
+                                        <i class="fas fa-futbol" style="color: #00bfff;"></i>&nbsp; 
+                                        <span style="color: #0e2c53; font-weight: 500;">Large</span> 
+                                        <span style="color: #00bfff; font-weight: 700;">Play Ground</span>
+                                    </li>
+                                </ul>
+                                
+                            <hr style="color: #ff5200;">
+                            <div>
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/about/quote.png" alt="">
+                                <span style="font-size: 20px; color: #ff5200; font-weight: 500;">“A Child Can Ask Questions A Man Cannot
+                                    Answer.”</span>
+                                <p class="ms-5" style="font-weight: 500; font-style: 18px;"> - Erma Bombeck </p>
+                                <hr style="color: #ff5200;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- about school end -->
+
+          <!-- live counting boxes start -->
+          <div class="container-fluid pt-5 text-center" style="background-image: url('https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/counter/counter-bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="container-box-mg">
+                <!-- Circle 1 -->
+                <div class="circle-box-mg" data-target="830">
+                    <img src="https://img.icons8.com/emoji/48/000000/baby-emoji.png" alt="Age 03 - 04 Icon">
+                    <h2 class="text-green count">0</h2>
+                    <p>Age 03 - 04</p>
+                </div>
+        
+                <!-- Circle 2 -->
+                <div class="circle-box-mg" data-target="26">
+                    <img src="https://img.icons8.com/emoji/48/000000/girl-emoji.png" alt="Age 10 - 12 Icon">
+                    <h2 class="text-purple count">0</h2>
+                    <p>Age 10 - 12</p>
+                </div>
+        
+                <!-- Circle 3 -->
+                <div class="circle-box-mg" data-target="100">
+                    <img src="https://img.icons8.com/emoji/48/000000/boy-emoji.png" alt="Total Boys Icon">
+                    <h2 class="text-orange count">0%</h2>
+                    <p>Total Boys</p>
+                </div>
+        
+                <!-- Circle 4 -->
+                <div class="circle-box-mg" data-target="100">
+                    <img src="https://img.icons8.com/emoji/48/000000/girl-emoji.png" alt="Total Girls Icon">
+                    <h2 class="text-blue count">0%</h2>
+                    <p>Total Girls</p>
+                </div>
+            </div>
+        </div>
+          <!-- live counting boxes end -->
+
+          <!-- Most Popular School Classes Start -->
+          <div class="container-fluid pt-5" style="background-color: #ffd7a1;">
+            <div class="container">
+              <h3 class="text-center mb-2" style="color: #92278f;">Our School Classes</h3>
+              <h2 style="font-weight: 700;" class="text-center mb-4">Most Popular School Classes</h2>
+              <div class="row">
+                  <div class="col-md-4 pt-2">
+                      <div class="class-card-mg">
+                          <div class="card-img-container-mg">
+                              <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/class01.jpg" class="card-img-top-mg" alt="Art and Color Management">
+                          </div>
+                          <div class="card-body popular-class">
+                              <h5 class="card-title popular-title pt-2">Art And Color Management</h5>
+                              <p class="card-teacher popular-teacher pt-2"><img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/teacher02.jpg" alt="">&nbsp; Joly Smith</p>
+                              <p class="card-price popular-price">$12.96 <span>Per Month</span></p>
+                              <div class="class-details text-center">
+                                  <div class="d-flex justify-content-between" style="color: #248d88;">
+                                      <p><span>24-30</span></p>
+                                      <p><span>09:30 - 12:00</span></p>
+                                      <p><span>06-08</span></p>
+                                  </div>
+                                  <div class="d-flex justify-content-between" style="color: #ff5200;">
+                                      <p>Class Size</p>
+                                      <p>Class Time</p>
+                                      <p>Years Old</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-4 pt-2">
+                      <div class="class-card-mg">
+                          <div class="card-img-container-mg">
+                              <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/class02.jpg" class="card-img-top-mg" alt="Music and Performance">
+                          </div>
+                          <div class="card-body popular-class">
+                              <h5 class="card-title popular-title pt-2">Music And Performance</h5>
+                              <p class="card-teacher popular-teacher pt-2"><img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/teacher01.jpg" alt="">&nbsp; Mrs. Labonno</p>
+                              <p class="card-price popular-price">$12.96 <span>Per Month</span></p>
+                              <div class="class-details text-center">
+                                  <div class="d-flex justify-content-between" style="color: #248d88;">
+                                      <p><span>24-30</span></p>
+                                      <p><span>09:30 - 12:00</span></p>
+                                      <p><span>06-08</span></p>
+                                  </div>
+                                  <div class="d-flex justify-content-between" style="color: #ff5200;">
+                                      <p>Class Size</p>
+                                      <p>Class Time</p>
+                                      <p>Years Old</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-md-4 pt-2">
+                      <div class="class-card-mg">
+                          <div class="card-img-container-mg">
+                              <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/class03.jpg" class="card-img-top-mg" alt="Religion and History">
+                          </div>
+                          <div class="card-body popular-class">
+                              <h5 class="card-title popular-title pt-2">Religion And History</h5>
+                              <p class="card-teacher popular-teacher pt-2"><img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/class/teacher03.jpg" alt="">&nbsp; Robot Smith</p>
+                              <p class="card-price popular-price">$12.96 <span>Per Month</span></p>
+                              <div class="class-details text-center">
+                                  <div class="d-flex justify-content-between" style="color: #248d88;">
+                                      <p><span>24-30</span></p>
+                                      <p><span>09:30 - 12:00</span></p>
+                                      <p><span>06-08</span></p>
+                                  </div>
+                                  <div class="d-flex justify-content-between" style="color: #ff5200;">
+                                      <p>Class Size</p>
+                                      <p>Class Time</p>
+                                      <p>Years Old</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="text-center">
+                      <button type="button" class="btn btn-primary mt-5 mb-5 py-2 px-3">GET STARTED NOW</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- Most Popular School Classes end -->
+
+          <!-- Our Best Popular Teachers start -->
+           <div class="container-fluid pt-5" style="background-image: url('https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/teacher/teacher-bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="container">
+                <h3 class="text-center" style="color: #92278f;">Meet Our Stuffy</h3>
+                <h2 style="font-weight: 700;" class="text-center mb-4">Our Best Popular Teachers</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                            <div class="uk-card-media-left uk-cover-container">  
+                                    <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/teacher/teacher01.jpg" alt="" uk-cover>
+                                    <canvas width="600" height="400"></canvas>
+                            </div>
+                            <div>
+                                <div class="uk-card-body">
+                                    <h3 class="uk-card-title">Steve Jobs</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                </div>
+                                <div>
+                                    <ul class="teacher-social">
+                                        <li>
+                                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="vimeo"><i class="fab fa-vimeo-v"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="behance"><i class="fab fa-behance"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                            <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/teacher/teacher02.jpg" alt="" uk-cover>
+                                <canvas width="600" height="400"></canvas>
+                            </div>
+                            <div>
+                                <div class="uk-card-body">
+                                    <h3 class="uk-card-title">Media Right</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                </div>
+                                <div>
+                                    <ul class="teacher-social">
+                                        <li>
+                                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="vimeo"><i class="fab fa-vimeo-v"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="behance"><i class="fab fa-behance"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                            <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/teacher/teacher03.jpg" alt="" uk-cover>
+                                <canvas width="600" height="400"></canvas>
+                            </div>
+                            <div>
+                                <div class="uk-card-body">
+                                    <h3 class="uk-card-title">Media Right</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                </div>
+                                <div>
+                                    <ul class="teacher-social">
+                                        <li>
+                                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="vimeo"><i class="fab fa-vimeo-v"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="behance"><i class="fab fa-behance"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                            <div class="uk-card-media-left uk-cover-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/teacher/teacher04.jpg" alt="" uk-cover>
+                                <canvas width="600" height="400"></canvas>
+                            </div>
+                            <div>
+                                <div class="uk-card-body">
+                                    <h3 class="uk-card-title">Media Left</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                </div>
+                                <div>
+                                    <ul class="teacher-social">
+                                        <li>
+                                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="vimeo"><i class="fab fa-vimeo-v"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="behance"><i class="fab fa-behance"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          <!-- Our Best Popular Teachers end -->
+
+          <!-- Our Classes Timetable start -->
+            <div class="container-fluid pt-5 pb-5" style="background-color: #fff8eb;">
+                <div class="container">
+                    <h3 class="text-center" style="color: #92278f;">Classes Timetable</h3>
+                    <h2 style="font-weight: 700;" class="text-center mb-5">Our Classes Timetable</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/monday.png"  alt="Schedule Image">
+
+                                <ul class="schedule-list-one">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/tuesday.png" alt="Schedule Image">
+
+                                <ul class="schedule-list-two">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/wednesday.png" alt="Schedule Image">
+
+                                <ul class="schedule-list-three">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/thursday.png" alt="Schedule Image">
+
+                                <ul class="schedule-list-four">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/thursday.png" alt="Schedule Image">
+
+                                <ul class="schedule-list-five">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="schedule-container">
+                                <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/schedule/saturday.png" alt="Schedule Image">
+
+                                <ul class="schedule-list-six">
+                                    <li>
+                                        <h6 class="title painting">Painting</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title">English</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                    <li>
+                                        <h6 class="title fitness">Power Fitness</h6>
+                                        <span class="time">07:30am - 08:30am</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <!-- Our Classes Timetable end -->
+
+          <!-- What Students Parents Say start -->
+          <section class="testimonial-section">
+            <h3 class="text-center pt-5" style="color: white;">Parents Say</h3>
+            <h2 style="font-weight: 700; color: white;" class="text-center mb-5">What Students Parents Say</h2>
+            <div class="container">
+             <div class="row justify-content-center">
+              <div class="col-md-5">
+               <div class="testimonial-card">
+                <div class="d-flex align-items-center">
+                 <img alt="Profile picture of Angel Witicker" height="50" src="https://storage.googleapis.com/a1aa/image/iw4OX7LdfYTJcS378tzN26cf6CwnLAUAZd8X666qOnS4wPnTA.jpg" width="50"/>
+                 <div class="ms-3">
+                  <h5>
+                   Angel Witicker
+                  </h5>
+                  <p>
+                    Parents
+                  </p>
+                 </div>
+                </div>
+                <p>
+                 Rapidiously buildcollaboration anden deas sharing viaing bleeding and edge nterfaces Energstcally plarigiarize team anbuilding and paradigms whereas goingi forward process mprovements and monetze fully tested ergstcally plarigiarize team whereas goingi forward process an services whereas going forward process
+                </p>
+                <div class="rating">
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                </div>
+               </div>
+              </div>
+              <div class="col-md-5">
+               <div class="testimonial-card">
+                <div class="d-flex align-items-center">
+                 <img alt="Profile picture of Witicker Alex" height="50" src="https://storage.googleapis.com/a1aa/image/y98QcpZWjL46Gxlt8pUGCu9Neqcb7jnGZd3zpxZ7uJHd4nzJA.jpg" width="50"/>
+                 <div class="ms-3">
+                  <h5>
+                   Witicker Alex
+                  </h5>
+                  <p>
+                   Parents
+                  </p>
+                 </div>
+                </div>
+                <p>
+                 Rapidiously buildcollaboration anden deas sharing viaing bleeding and edge nterfaces Energstcally plarigiarize team anbuilding and paradigms whereas goingi forward process mprovements and monetze fully tested ergstcally plarigiarize team whereas goingi forward process an services whereas going forward process
+                </p>
+                <div class="rating">
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                 <i class="fas fa-star">
+                 </i>
+                </div>
+               </div>
+              </div>
+             </div>
+            </div>
+           </section>
+          <!-- What Students Parents Say end -->
+
+          <!-- footer start -->
+          <div class="content-footer pt-5">
+            <div class="container">
+             <div class="about">
+              <h2>
+                 <img alt="Kitton Logo" height="50" src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/logo/logo.png" width="150"/>
+              </h2>
+              <p>
+               Assertively develop team driven niche marketis and revolutionary servicesre Synergistically parallel task ntrinsically reintermediate best credibly.
+              </p>
+              <div class="contact-info">
+               <p>
+                <i class="fa fa-phone">
+                </i>
+                +08 645 280 947, 0289642
+               </p>
+               <p>
+                <i class="fa fa-map-marker-alt">
+                </i>
+                20 High Street, Blazfield Ave,250 USA
+               </p>
+               <p>
+                <i class="fa fa-globe">
+                </i>
+                www.adminkittonschool.org
+               </p>
+              </div>
+              <div class="social-icons">
+               <a href="#">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a href="#">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a href="#">
+                <i class="fab fa-linkedin-in">
+                </i>
+               </a>
+               <a href="#">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+               <a href="#">
+                <i class="fab fa-pinterest">
+                </i>
+               </a>
+              </div>
+             </div>
+             <div class="blog">
+              <h2>
+               Recent Blog Post
+              </h2>
+              <div class="blog-item">
+               <img alt="Child playing with toy" height="80" src="https://storage.googleapis.com/a1aa/image/ejGvXSzBleuDBkeKeOigeTQqlnwORxeQA0LN8jbC4AefU9PnTA.jpg" width="80"/>
+               <div>
+                <p>
+                 Remo Suppor Center What For Semiconductor Provider
+                </p>
+                <p>
+                 April 08,2022
+                </p>
+               </div>
+              </div>
+              <div class="blog-item">
+               <img alt="Children studying together" height="80" src="https://storage.googleapis.com/a1aa/image/fMn96CflDxh10ENCvN5fjMEHp2FqufSRGn4bQuvie4G6qfz5E.jpg" width="80"/>
+               <div>
+                <p>
+                 Remo Suppor Center What For Semiconductor Provider
+                </p>
+                <p>
+                 April 08,2022
+                </p>
+               </div>
+              </div>
+             </div>
+             <div class="signup">
+              <h2>
+               Sign up for open day
+              </h2>
+              <p>
+               Enter your email and get latest updates and offers subscribe us
+              </p>
+              <input placeholder="Enter your email" type="email"/>
+              <button>
+               SUBSCRIBE NOW!
+              </button>
+             </div>
+            </div>
+           </div>
+           <footer class="footer" style="background-color: #fff8eb;">
+            <p class="last-line">
+             © 2024 Kitton. All rights reserved.
+            </p>
+           </footer>
+          <!-- footer end -->
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- slider script -->
+    <script>
+                const stack = document.querySelector(".stack");
+        const cards = Array.from(stack.children)
+          .reverse()
+          .filter((child) => child.classList.contains("card"));
+
+        cards.forEach((card) => stack.appendChild(card));
+
+        function moveCard() {
+          const lastCard = stack.lastElementChild;
+          if (lastCard.classList.contains("card")) {
+            lastCard.classList.add("swap");
+
+            setTimeout(() => {
+              lastCard.classList.remove("swap");
+              stack.insertBefore(lastCard, stack.firstElementChild);
+            }, 1200);
+          }
+        }
+
+        let autoplayInterval = setInterval(moveCard, 4000);
+
+        stack.addEventListener("click", function (e) {
+          const card = e.target.closest(".card");
+          if (card && card === stack.lastElementChild) {
+            card.classList.add("swap");
+
+            setTimeout(() => {
+              card.classList.remove("swap");
+              stack.insertBefore(card, stack.firstElementChild);
+            }, 1200);
+          }
+        });
+    </script>
+    <!--  -->
+
+    <!-- navbar script -->
+    <script>
+      window.addEventListener('scroll', function () {
+        var topBar = document.querySelector('.top-bar');
+        var navbar = document.querySelector('.navbar');
+        
+        if (window.scrollY > 100) { // Adjust the scroll threshold as needed
+          topBar.style.display = 'none'; // Hide top bar
+          navbar.classList.add('fixed-top'); // Fix navbar at top
+        } else {
+          topBar.style.display = 'flex'; // Show top bar
+          navbar.classList.remove('fixed-top'); // Remove fixed from navbar
+        }
+      });
+    </script>
+    <!--  -->
+
+    <!-- live counting script -->
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let counted = false; // To ensure counting starts only once
+        
+            function startCounting() {
+                if (!counted) {
+                    const counters = document.querySelectorAll('.count');
+                    counters.forEach(counter => {
+                        const target = +counter.closest('.circle-box-mg').getAttribute('data-target');
+                        let count = 0;
+                        const updateCounter = () => {
+                            const increment = target / 100;
+                            if (count < target) {
+                                count += increment;
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCounter, 30);
+                            } else {
+                                counter.innerText = target + (counter.innerText.includes('%') ? '%' : '');
+                            }
+                        };
+                        updateCounter();
+                    });
+                    counted = true;
+                }
+            }
+        
+            // Trigger the count when the section is in view
+            function isInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+        
+            const counterSection = document.querySelector('.container-box-mg');
+            window.addEventListener('scroll', () => {
+                if (isInViewport(counterSection)) {
+                    startCounting();
+                }
+            });
+        });
+     </script>
+<!--  -->
+
+<!-- second nav -->
+<script>
+    // Enable hover dropdown for desktop
+    const dropdown = document.querySelector('.dropdown');
+    dropdown.addEventListener('mouseover', function() {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        menu.classList.add('show');
+    });
+    dropdown.addEventListener('mouseout', function() {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        menu.classList.remove('show');
+    });
+</script>
+<!--  -->
+    
+
+  </body>
+</html>

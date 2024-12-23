@@ -1,0 +1,895 @@
+
+p{
+    text-align: justify;
+    font-family: "Quicksand", sans-serif;
+}
+h2, h3{
+    font-family: "Dancing Script", cursive !important;
+}
+
+/* first nav */
+.top-bar {
+    background-color: #8e44ad;
+    color: white;
+    padding: 10px 0;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.top-bar .contact-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Ensure icons and text wrap if needed */
+}
+
+.top-bar .contact-info i {
+    margin-right: 5px;
+}
+
+.top-bar .social-icons {
+    display: flex;
+}
+
+.top-bar .social-icons a {
+    color: white;
+    margin-left: 10px;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 768px) {
+    .top-bar .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .top-bar .contact-info {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .top-bar .social-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-bar .social-icons a {
+        margin-left: 5px; /* Reduce spacing for smaller screens */
+    }
+}
+
+/* second nav  */
+/* Navbar design changes */
+.navbar-nav .nav-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: inherit; /* Maintain original color */
+}
+
+/* Dropdown open on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Additional styling for navbar */
+.navbar {
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+    margin: 0 10px;
+}
+
+.nav-item {
+    font-weight: 600;
+}
+
+/* Fixed navbar */
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+/* nav end */
+
+/* index css start */
+/* admission form css start */
+.admission-form-header {
+    background: linear-gradient(135deg, #FF9999, #FF99CC);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+.admission-sec-header {
+    background: linear-gradient(135deg, #99FF99, #99FFCC);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+.admission-form-control:focus {
+    border-color: #FF99CC;
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 204, 0.25);
+}
+/* admission form css end */
+
+/* live counting css start */
+.circle-box-mg {
+    width: 250px; /* Increased width */
+    height: 250px; /* Increased height */
+    border-radius: 50%;
+    border: 2px dashed #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    margin: 20px;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.circle-box-mg:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.circle-box-mg img {
+    width: 70px; /* Increased size of image */
+    height: 70px;
+    transition: transform 0.3s ease;
+}
+
+.circle-box-mg:hover img {
+    transform: scale(1.2);
+}
+
+.circle-box-mg h2 {
+    margin: 10px 0 5px;
+    font-size: 50px; /* Increased font size */
+    font-weight: bold;
+}
+
+.circle-box-mg p {
+    font-size: 18px; /* Increased font size */
+}
+
+.container-box-mg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+/* Colors */
+.text-green { color: #00b050; }
+.text-purple { color: #a64d79; }
+.text-orange { color: #f28c28; }
+.text-blue { color: #29abe2; }
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .circle-box-mg {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .circle-box-mg h2 {
+        font-size: 45px;
+    }
+    
+    .circle-box-mg p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .circle-box-mg {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .circle-box-mg h2 {
+        font-size: 40px;
+    }
+    
+    .circle-box-mg p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-box-mg {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .circle-box-mg {
+        width: 180px;
+        height: 180px;
+        margin: 10px 0;
+    }
+    
+    .circle-box-mg h2 {
+        font-size: 36px;
+    }
+    
+    .circle-box-mg p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .circle-box-mg {
+        width: 160px;
+        height: 160px;
+    }
+
+    .circle-box-mg h2 {
+        font-size: 32px;
+    }
+    
+    .circle-box-mg p {
+        font-size: 13px;
+    }
+
+    .container-box-mg {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .circle-box-mg {
+        width: 140px;
+        height: 140px;
+    }
+
+    .circle-box-mg h2 {
+        font-size: 28px;
+    }
+
+    .circle-box-mg p {
+        font-size: 12px;
+    }
+}
+
+
+/* live counting css end */
+
+/* most popular School classes css start */
+.class-card-mg {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.card-img-container-mg {
+    overflow: hidden;
+}
+
+.card-img-top-mg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-img-container-mg:hover .card-img-top-mg {
+    transform: scale(1.1);
+}
+
+.popular-class {
+    padding: 15px;
+    text-align: center;
+}
+
+.popular-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.popular-teacher {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.popular-price {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.popular-price span {
+    font-size: 12px;
+    color: #666;
+}
+
+.class-details {
+    margin-top: 10px;
+}
+
+.class-details p {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.class-details span {
+    font-weight: 600;
+    display: block;
+}
+
+.class-details .d-flex {
+    margin-bottom: 5px;
+}
+/* most popular School classes css end */
+
+/* Our Best Popular Teachers css start 2 */
+.teacher-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    list-style: none;
+}
+
+.uk-card {
+    border-radius: 20px;
+    overflow: hidden; /* Ensures the image does not overflow the card */
+}
+
+.uk-card-media-left img,
+.uk-card-media-right img {
+    transition: transform 0.3s ease; /* Smooth transition for the image */
+}
+
+.uk-card-media-left:hover img,
+.uk-card-media-right:hover img {
+    transform: scale(1.1); /* Scale image on hover */
+}
+
+/* Our Best Popular Teachers css end 2 */
+
+ /* Our Classes Timetable css start */
+ .schedule-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Adjust based on your image size */
+}
+
+.schedule-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* first */
+.schedule-list-one {
+    position: absolute;
+    left: 80px;
+    bottom: 40px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-one li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-one .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-one .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* second */
+.schedule-list-two {
+    position: absolute;
+    left: 80px;
+    bottom: 25px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-two li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-two .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-two .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* third */
+.schedule-list-three {
+    position: absolute;
+    left: 90px;
+    bottom: 30px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-three li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-three .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-three .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* fourth */
+.schedule-list-four {
+    position: absolute;
+    left: 100px;
+    bottom: 30px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-four li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-four .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-four .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* fifth */
+.schedule-list-five {
+    position: absolute;
+    left: 100px;
+    bottom: 30px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-five li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-five .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-five .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* sixth */
+.schedule-list-six {
+    position: absolute;
+    left: 80px;
+    bottom: 40px;
+    padding: 20px;
+    list-style: none;
+    color: #000; 
+}
+
+.schedule-list-six li {
+    margin-bottom: 10px;
+}
+
+.schedule-list-six .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.schedule-list-six .time {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+ /* Our Classes Timetable css end */
+
+ /* What Students Parents Say css start */
+ .testimonial-section {
+    background-image: url('https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/client/client-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+.testimonial-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.testimonial-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.testimonial-card img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.testimonial-card h5 {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+.testimonial-card p {
+    font-size: 0.875rem;
+    color: #666;
+}
+.testimonial-card .rating i {
+    color: #ff4081;
+}
+ /* What Students Parents Say css end */
+/* index css end */
+
+/* Classes Css Start */
+/* without carousel image css start */
+.container-classespage {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100%;
+  }
+  
+  .centered-classespage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+  }
+/* without carousel image css end */
+/* Classes Css End */
+
+/* Teachers Css Start */
+/* Our Best Popular Teachers css start 1 */
+.teacher-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+.img-fluid {
+    max-width: 100%; /* Ensures images are responsive */
+    height: auto; /* Maintains aspect ratio */
+}
+.teacher-card:hover{
+    transform: scale(1.1);
+    transition: 2s;
+}
+.teacher-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+.teacher-card h5 {
+    margin-top: 15px;
+    font-weight: bold;
+}
+.teacher-card p {
+    color: #777;
+}
+.social-icons-teachers a {
+    color: #ff4081;
+    margin: 0 5px;
+    font-size: 18px;
+}
+.social-icons-teachers a:hover {
+    color: #333;
+}
+/* Our Best Popular Teachers css end 1 */
+/* Become A Teacher css start */
+.content-new-teacher {
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/bg/call-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.conten-new-teachert h1 {
+    color: #8e44ad;
+    font-size: 36px;
+    font-weight: bold;
+}
+.content-new-teacher p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.btn-primary {
+    background-color: #8e44ad !important;
+    border-color: #8e44ad !important;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+.btn-primary:hover {
+    background-color: #732d91;
+    border-color: #732d91;
+}
+/* Become A Teacher css end */
+/* Teachers Css End */
+
+/* contact css start */
+/* contact form css start */
+.form-container-contact {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+.form-container-contact h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+/* contact form css end */
+/* map css start */
+.map-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.info-box-container-contact {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Ensures flexibility on small screens */
+    gap: 10px;
+}
+
+.info-box-contact {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+    flex: 1;
+    max-width: 200px;
+    min-width: 150px; /* Ensures boxes shrink gracefully */
+    box-sizing: border-box;
+}
+
+.info-box-contact h4 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info-box-contact p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Media Queries to hide the boxes on smaller screens */
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px; /* Reduces map height for smaller screens */
+    }
+
+    .info-box-container-contact {
+        display: none; /* Hide info boxes when screen size is less than 768px */
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        height: 250px; /* Further reducing map height for very small screens */
+    }
+
+    .info-box-container-contact {
+        display: none; /* Ensures info boxes stay hidden */
+    }
+}
+
+/* map css end */
+/* contact css end */
+
+/* about css start */
+.about-section {
+    background-color: #fdf2e9;
+    padding: 50px 0;
+}
+.about-image {
+    max-width: 100%;
+}
+.about-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.about-description {
+    margin-bottom: 40px;
+}
+/* about css end */
+
+/* footer css start */
+.content-footer {
+    background-image: url('https://png.pngtree.com/background/20210716/original/pngtree-books-and-scissors-yellow-school-background-picture-image_1350092.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px 0;
+}
+.content-footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.content-footer .about,
+.content-footer .blog,
+.content-footer .signup {
+    width: 30%;
+    margin-bottom: 20px;
+}
+.content-footer .about p,
+.content-footer .signup p {
+    color: #000;
+}
+.content-footer .about .contact-info,
+.content-footer .about .social-icons {
+    margin-top: 10px;
+}
+.content-footer .about .social-icons a {
+    color: #000;
+    margin-right: 10px;
+}
+.content-footer .blog .blog-item {
+    display: flex;
+    margin-bottom: 10px;
+}
+.content-footer .blog .blog-item img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+.content-footer .blog .blog-item p {
+    margin: 0;
+}
+.content-footer .signup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.content-footer .signup button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.footer {
+    background-color: #fff;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+.last-line{
+    text-align: center;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 992px) {
+    .content-footer .about,
+    .content-footer .blog,
+    .content-footer .signup {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-footer .about,
+    .content-footer .blog,
+    .content-footer .signup {
+        width: 100%;
+    }
+
+    .content-footer .container {
+        display: block;
+        text-align: center;
+    }
+    
+    .content-footer .signup input,
+    .content-footer .signup button {
+        width: 100%;
+    }
+    
+    .content-footer .about .social-icons a {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .content-footer .blog .blog-item img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .content-footer .blog .blog-item {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* footer css end */

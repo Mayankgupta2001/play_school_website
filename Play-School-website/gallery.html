@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit-icons.min.js"></script>
+<style>
+  
+    @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+
+    .page-title {
+      font-size: 35px;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+
+    .container-gallery {
+      padding: 40px 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card-wrap {
+      margin: 20px;
+      transform: perspective(800px);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .card {
+      position: relative;
+      flex: 0 0 240px;
+      width: 350px;
+      height: 450px;
+      background-color: #333;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+      transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+
+    .card-bg {
+      opacity: 0.5;
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      pointer-events: none;
+    }
+
+    .card-info {
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      color: #fff;
+      transform: translateY(50%);
+      transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .card-info p {
+      opacity: 0;
+      text-shadow: black 0 2px 3px;
+      transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .card-info:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-blend-mode: overlay;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+
+    .card-info h1 {
+      font-size: 30px;
+      font-weight: 700;
+      text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+    }
+
+    .card-wrap:hover .card-info {
+      transform: translateY(0);
+    }
+
+    .card-wrap:hover .card-info p {
+      opacity: 1;
+    }
+
+    .card-wrap:hover .card-info, .card-wrap:hover .card-info p {
+      transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .card-wrap:hover .card-info:after {
+      transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-wrap:hover .card-bg {
+      transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 0.8;
+    }
+
+    .card-wrap:hover .card {
+      transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+    }
+
+    .youtube-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff0000;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .youtube-button:hover {
+      background-color: #e60000;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* gallery slider css start */
+    body {
+            background-image: url('https://images.unsplash.com/photo-1510148199876-8a856ee41d42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+             width: 100%;
+            /* height: 100vh;
+            padding: 0;
+            overflow: hidden;  */
+        }
+
+        .space-gallery-slider {
+            height: 100px;
+        }
+
+        .gallery-slider {
+            height: 500px;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1510148199876-8a856ee41d42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-height: 70vh;
+        }
+
+        .image-container-gallery-slider {
+            transform: rotate(0deg);
+            max-width: 600px;
+            border: 10px solid #fff;
+            border-bottom: 50px solid #fff;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%);
+            transition: 2s;
+        }
+
+        .out-screen-gallery-slider {
+            transform: rotate(90deg);
+            left: -700px;
+        }
+
+        .come-in-gallery-slider {
+            transform: rotate(0deg);
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 10;
+        }
+
+        #prev-gallery, #next-gallery {
+            position: absolute;
+            background: #F39C12;
+            border: none;
+            color: #fff;
+            padding: 10px;
+        }
+
+        #prev-gallery {
+            left: 0;
+        }
+
+        #next-gallery {
+            right: 0;
+        }
+
+        @media screen and (max-width: 500px) {
+            .image-container-gallery-slider {
+                width: 100%;
+            }
+        }
+    /* gallery slider css end */
+</style>
+</head>
+<body>
+
+   <!-- nav start -->
+   <div class="top-bar">
+    <div class="container">
+        <div class="contact-info">
+            <i class="fas fa-clock"></i> 9:30am - 6:30pm Mon - Sun
+            <i class="fas fa-phone-alt ms-4"></i> +800-123-4567 6587
+            <i class="fas fa-map-marker-alt ms-4"></i> Beverley, New York 224 US
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fab fa-skype"></i></a>
+            <a href="#"><i class="fas fa-rss"></i></a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+      <a class="navbar-brand" href="index.html">
+          <img alt="Kitton Logo" height="50" src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/logo/logo.png" width="130"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a class="nav-link active" href="index.html" style="color: #8dc63f;">
+                      <i class="fas fa-home"></i>&nbsp; Home
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="about.html" style="color: #92278f;">
+                      <i class="fas fa-user"></i>&nbsp; About
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="classes.html" style="color: #ff5200;">
+                      <i class="fas fa-book"></i>&nbsp; Classes
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="teachers.html" style="color: #01767a;">
+                      <i class="fas fa-chalkboard-teacher"></i>&nbsp; Teachers
+                  </a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #f2069b;">
+                      <i class="fas fa-camera-retro"></i>&nbsp; Moments
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a style="color: #47ee05f1;" class="dropdown-item" href="gallery.html"><i class="fas fa-images"></i>&nbsp; Gallery</a></li>
+                      <li><a style="color: #e11a1f;" class="dropdown-item" href="events.html"><i class="fas fa-calendar-alt"></i>&nbsp; Events</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="contact.html" style="color: #002c9d;">
+                      <i class="fas fa-map-marker-alt"></i>&nbsp; Contact
+                  </a>
+              </li>
+          </ul>
+          <form class="d-flex" role="search">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+          </form>
+      </div>
+  </div>
+</nav>
+
+   <!-- nav end -->
+  
+
+  <!-- without carousel image start -->
+<div class="container-classespage">
+    <img src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/banner/page-header.jpg" alt="Snow" style="width:100%; background-repeat: no-repeat; background-size: cover;">
+    <div class="centered-classespage">
+        <h1 style="font-weight: 700; color: black;" class="text-center mb-5">Gallery</h1>
+    </div>
+  </div>
+<!-- without carousel image end -->
+
+<!-- gallery start -->
+<div class="container-fluid" style="background-image: url('https://i.pinimg.com/736x/76/0c/93/760c9360f94d29ca97bad836b1ec45d1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; ">
+  <div class="container-gallery">
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl1.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Edge Catalysts For Change</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl2.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Plagiarze Reable Bandwdth</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl3.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Edge Catalysts For Change</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl5.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Plagiarze Reable Bandwdth</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl6.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Edge Catalysts For Change</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl7.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Plagiarze Reable Bandwdth</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl8.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Edge Catalysts For Change</h1>
+        </div>
+      </div>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+        <div class="card-bg" style="background-image: url(https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/gallery/gl9.jpg);"></div>
+        <div class="card-info">
+          <h1 style="color: whitesmoke;">Plagiarze Reable Bandwdth</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating YouTube Button -->
+<a href="https://www.youtube.com/@PixelPerfectLabs" class="youtube-button" target="_blank">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255,255,255);">
+    <path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.762-1.765c.411-1.566.417-4.814.417-4.814s.005-3.262-.407-4.826zm-12.592 7.36v-6.95l6.311 3.471-6.311 3.479z"></path>
+  </svg>
+</a>
+<!-- gallery end -->
+
+
+<!-- gallery slider start -->
+<div class="space-gallery-slider"></div>
+  <div class="container" style="height: 50px">
+      <div class="row">
+          <div class="col-md">
+              <button id="prev-gallery">Prev</button>
+              <button id="next-gallery">Next</button>
+          </div>
+      </div>
+  </div>
+<div class="container-fluid gallery-slider">
+    <div class="row">
+        <div class="m-auto on-screen image-container-gallery-slider">
+            <img src="https://media.istockphoto.com/id/998670532/photo/childs-are-playing-with-play-clay-in-classroom.jpg?s=612x612&w=0&k=20&c=2I7FiImWG-qaoPCd9ksEcY2FyHZKXyEAk7UR_VR2AYo=" class="img-fluid" alt="">
+        </div>
+        <div class="m-auto out-screen-gallery-slider image-container-gallery-slider">
+            <img src="https://media.istockphoto.com/id/1402700264/photo/teacher-with-a-group-of-elementary-students-playing-with-toy-blocks.jpg?s=612x612&w=0&k=20&c=VXOEyDfm5ZFbMjZ3Eu1Z62iigeI02SOg7IDmRb5jw3c=" class="img-fluid" alt="">
+        </div>
+        <div class="m-auto out-screen-gallery-slider image-container-gallery-slider">
+            <img src="https://media.istockphoto.com/id/671260408/photo/group-of-kindergarten-kids-friends-arm-around-sitting-and-smiling-fun.jpg?s=612x612&w=0&k=20&c=18E5HAgltLpGXJ2gHAabmssSvcYNwe0eDskYkj1wu90=" class="img-fluid" alt="">
+        </div>
+        <div class="m-auto out-screen-gallery-slider image-container-gallery-slider">
+            <img src="https://media.istockphoto.com/id/589961490/photo/children-playing-with-colorful-blocks-building-a-block-tower.jpg?s=612x612&w=0&k=20&c=65mogYttliQ54CD7JElf6Y9DvfktYnE-qRGdsu65HwQ=" class="img-fluid" alt="">
+        </div>
+        <div class="m-auto out-screen-gallery-slider image-container-gallery-slider">
+            <img src="https://media.istockphoto.com/id/983418152/photo/cheerful-little-children-having-fun-doing-finger-painting.jpg?s=612x612&w=0&k=20&c=DfkQNYZXjiouKO0lBzx7PZoAKAvZLr6WBq-uVjRbBOg=" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+<!-- gallery slider end -->
+
+
+<!-- footer start -->
+<div class="content-footer pt-5">
+  <div class="container">
+   <div class="about">
+    <h2>
+       <img alt="Kitton Logo" height="50" src="https://aminurislam.com/labartisan/kitton-demo/kitton/assets/images/logo/logo.png" width="150"/>
+    </h2>
+    <p>
+     Assertively develop team driven niche marketis and revolutionary servicesre Synergistically parallel task ntrinsically reintermediate best credibly.
+    </p>
+    <div class="contact-info">
+     <p>
+      <i class="fa fa-phone">
+      </i>
+      +08 645 280 947, 0289642
+     </p>
+     <p>
+      <i class="fa fa-map-marker-alt">
+      </i>
+      20 High Street, Blazfield Ave,250 USA
+     </p>
+     <p>
+      <i class="fa fa-globe">
+      </i>
+      www.adminkittonschool.org
+     </p>
+    </div>
+    <div class="social-icons">
+     <a href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a href="#">
+      <i class="fab fa-pinterest">
+      </i>
+     </a>
+    </div>
+   </div>
+   <div class="blog">
+    <h2>
+     Recent Blog Post
+    </h2>
+    <div class="blog-item">
+     <img alt="Child playing with toy" height="80" src="https://storage.googleapis.com/a1aa/image/ejGvXSzBleuDBkeKeOigeTQqlnwORxeQA0LN8jbC4AefU9PnTA.jpg" width="80"/>
+     <div>
+      <p>
+       Remo Suppor Center What For Semiconductor Provider
+      </p>
+      <p>
+       April 08,2022
+      </p>
+     </div>
+    </div>
+    <div class="blog-item">
+     <img alt="Children studying together" height="80" src="https://storage.googleapis.com/a1aa/image/fMn96CflDxh10ENCvN5fjMEHp2FqufSRGn4bQuvie4G6qfz5E.jpg" width="80"/>
+     <div>
+      <p>
+       Remo Suppor Center What For Semiconductor Provider
+      </p>
+      <p>
+       April 08,2022
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="signup">
+    <h2>
+     Sign up for open day
+    </h2>
+    <p>
+     Enter your email and get latest updates and offers subscribe us
+    </p>
+    <input placeholder="Enter your email" type="email"/>
+    <button>
+     SUBSCRIBE NOW!
+    </button>
+   </div>
+  </div>
+ </div>
+ <footer class="footer" style="background-color: #fff8eb;">
+  <p class="last-line">
+   © 2024 Kitton. All rights reserved.
+  </p>
+ </footer>
+<!-- footer end -->
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+<!-- navbar script -->
+<script>
+    window.addEventListener('scroll', function () {
+      var topBar = document.querySelector('.top-bar');
+      var navbar = document.querySelector('.navbar');
+      
+      if (window.scrollY > 100) { // Adjust the scroll threshold as needed
+        topBar.style.display = 'none'; // Hide top bar
+        navbar.classList.add('fixed-top'); // Fix navbar at top
+      } else {
+        topBar.style.display = 'flex'; // Show top bar
+        navbar.classList.remove('fixed-top'); // Remove fixed from navbar
+      }
+    });
+  </script>
+  <!--  -->
+
+
+<!-- Vanilla Tilt.js Script -->
+<script>
+    VanillaTilt.init(document.querySelectorAll(".card-wrap"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.4
+    });
+</script>
+<!--  -->
+
+<!-- gallery slider -->
+<script>
+  $('#next-gallery').click(function () {
+      if ($('.on-screen').next().length === 0) {
+          $('.on-screen').removeClass('on-screen come-in-gallery-slider').addClass('out-screen-gallery-slider');
+          $('.image-container-gallery-slider').first().removeClass('out-screen-gallery-slider').addClass('come-in-gallery-slider on-screen');
+      } else {
+          $('.on-screen').removeClass('on-screen come-in-gallery-slider').addClass('out-screen-gallery-slider').next('.image-container-gallery-slider').addClass('come-in-gallery-slider on-screen');
+      }
+  });
+
+  $('#prev-gallery').click(function () {
+      if ($('.on-screen').prev().length === 0) {
+          $('.on-screen').removeClass('on-screen come-in-gallery-slider').addClass('out-screen-gallery-slider');
+          $('.image-container-gallery-slider').last().removeClass('out-screen-gallery-slider').addClass('come-in-gallery-slider on-screen');
+      } else {
+          $('.on-screen').removeClass('on-screen come-in-gallery-slider').addClass('out-screen-gallery-slider').prev('.image-container-gallery-slider').addClass('come-in-gallery-slider on-screen');
+      }
+  });
+</script>
+<!--  -->
+
+  </body>
+  </html>
+  
